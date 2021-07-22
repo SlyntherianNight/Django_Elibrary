@@ -1,0 +1,135 @@
+{% extends 'api_base.html' %}
+
+
+{% block title %} E-Library/Dashboard{% endblock %}
+
+
+{% block apicss %}
+<!-- css content starts here      -->
+<style>
+    .row {
+        margin-left: 7vw;
+        margin-bottom: 6vh;
+        width: 80vw;
+        display: flex;
+        flex-direction: row;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card card-body">
+            <a class="btn btn-outline-primary btn-sm btn-block" href="">TOTAL BOOKS</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>
+                        <h4 style="margin-left: 20vw;">{{total_books}}</h4>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-body">
+            <a class="btn btn-outline-primary btn-sm btn-block" href="">BOOKS LEND</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>
+                        <h4 style="margin-left: 20vw;">{{delivered}}</h4>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-body">
+            <a class="btn btn-outline-primary btn-sm btn-block" href="">BOOKS PENDING</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>
+                        <h4 style="margin-left: 20vw;">{{pending}}</h4>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <hr style="margin-top:4vh;">
+</div>
+<div class=" row m_content">
+    <div class="col-md-5">
+        <h5>STUDENTS</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-secondary btn-sm btn-block" href="{% url 'create_student' %}">CREATE STUDENT</a>
+            <table class="table table-sm">
+                <tr>
+                    <th></th>
+                    <th>STUDENTS</th>
+                    <th>PHONE</th>
+                </tr>
+
+                {% for student in students %}
+                <tr>
+                    <td><a class="btn btn-outline-primary btn-sm" style="border:0px" href="{% url 'students' student.id %}">View</a></td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.phone}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <h5>CUSTOMERS</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-secondary btn-sm btn-block" href="{% url 'create_customer' %}">CREATE CUSTOMER</a>
+            <table class="table table-sm">
+                <tr>
+                    <th></th>
+                    <th>CUSTOMERS</th>
+                    <th>PHONE</th>
+                </tr>
+
+                {% for customer in customers %}
+                <tr>
+                    <td><a class="btn btn-outline-primary btn-sm" style="border:0px" href="{% url 'customers' customer.id %}">View</a></td>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.phone}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row m_content">
+    <div class="col-md-7">
+        <h5>LAST 5 </h5>
+        <hr>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>BOOK</th>
+                    <th>DATE OREDERED</th>
+                    <th>STATUS</th>
+                    <th>UPDATE</th>
+                    <th>REMOVE</th>
+                </tr>
+
+                {% for order in orders %}
+                <tr>
+                    <td>{{order.book}}</td>
+                    <td>{{order.date_created}}</td>
+                    <td>{{order.status}}</td>
+                    <td><a class="btn btn-outline-info btn-sm" href="{% url 'update_order' order.id %}">Update</a></td>
+                    <td><a class="btn btn-outline-danger btn-sm" href="{% url 'delete_order' order.id %}">Remove</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

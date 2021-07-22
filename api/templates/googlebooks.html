@@ -1,0 +1,61 @@
+<!DOCTYPE html "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Google Books Embedded Viewer API Example</title>
+    <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background-color:#e4dede ;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="display-4 align-middle mt-3 text-dark">Google Api</h1>
+    </div>
+    <div class="container mt-3 p-3 mb-5 border-0" style="margin-left:10vw;width:30vw;float:left;width: 30vw;display: block; z-index: 0;position: absolute;">
+        <div class="card text-white bg-dark mb-3 float-left shadow-lg">
+            <div class="card-header">Google Books Api app</div>
+            <div class="card-body">
+                <form name="myForm" action="/myaction.php" onsubmit="return validateForm()" method="post">
+                <h4 class="card-title">Type your ISBN below</h4>
+                <input type="text" name="fname" placeholder="Enter your ISBN">
+                <input type="submit" value="Submit" class="btn btn-primary mt-2 mb-2">
+                </form>
+                <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora harum ab, quia
+                    deleniti voluptas blanditiis nostrum ducimus quas deserunt repellendus?</p>
+            </div>
+        </div>
+    </div>
+    <div class="container mb-5" style="height: 80vh;float:right;margin:5vh 5vw 5vh 0vw;">
+        <div id="viewerCanvas" style="width: 50vw; height: 500px;float:right;"></div>
+    </div>
+    <script type="text/javascript">
+        google.books.load();
+  
+        function initialize() {
+          var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+          viewer.load('ISBN:0738531367');
+        }
+        function validateForm(){
+            var fisnb = document.forms['myform']['fname'].value;
+            console.log(fisnb);
+            return false;
+        }
+  
+        google.books.setOnLoadCallback(initialize);
+      </script>
+</body>
+
+</html>

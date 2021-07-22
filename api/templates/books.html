@@ -1,0 +1,58 @@
+{% extends 'api_base.html' %}
+
+{% block apicss %}
+<!-- css content starts here      -->
+<style>
+    .row {
+        margin-left: 7vw;
+        margin-bottom: 6vh;
+        width: 80vw;
+        display: flex;
+        flex-direction: row;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="row-1">
+        <div class="col-md-12">
+            <div class="card card-body row " style="width:55vw;margin-left: 9vw;">
+                <form method="get">
+                    {{myFilter.form}}
+                    <button class="btn btn-primary btn-sm col-3 mt-2" type="submit" style="width:6vw">Search</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card card-body">
+            <a class="btn btn-secondary btn-sm btn-block"  href="{% url 'create_book' %}"> BOOKS </a>
+            <hr>
+            <table class="table">
+                <tr>
+                    <th>BOOK</th>
+                    <th>CATEGORY</th>
+                    <th>PRICE</th>
+                    <th>STATUS</th>
+                    <th>UPDATE</th>
+                    <th>REMOVE</th>
+                </tr>
+
+                {% for i in books %}
+                    <tr>
+                        <td>{{i.name}}</td>
+                        <td>{{i.category}}</td>
+                        <td>{{i.price}}</td>
+                        <td>{{i.status}}</td>
+                        <td><a class="btn btn-outline-info btn-sm" href="{% url 'update_book' i.id %}">Update</a></td>
+                        <td><a class="btn btn-outline-danger btn-sm" href="{% url 'delete_book' i.id %}">Remove</a></td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

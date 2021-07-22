@@ -1,0 +1,97 @@
+{% extends 'api_base.html' %}
+
+{% block title %} E-Library/Customers_Sec.{% endblock %}
+
+
+{% block apicss %}
+<!-- css content starts here      -->
+<style>
+    .row {
+        margin-left: 7vw;
+        margin-bottom: 6vh;
+        width: 80vw;
+        display: flex;
+        flex-direction: row;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<div class=" row m_content my-4">
+    <div class="col-md-4">
+        <div class="card card-body">
+            <h5>CUSTOMER</h5>
+            <hr>
+            <a class="btn btn-outline-primary btn-sm btn-block" href="">UPDATE</a>
+            <a class="btn btn-outline-primary btn-sm btn-block my-2" href="{% url 'create_order' customers.id %}">PLACE
+                ORDER</a>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-body">
+            <h5>CONTACT INFORMATION</h5>
+            <hr>
+            <span>Email : {{customers.email}}</span>
+            <span>Phone : {{customers.phone}}</span>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-body">
+            <h5>TOTAL BOOKS ORDERED</h5>
+            <hr>
+            <table>
+                <tr>
+                    <th>{{totalorders}}</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row-1">
+    <div class="col-md-12">
+        <div class="card card-body row " style="width:30vw;margin-left: 9vw;">
+            <form method="get">
+                {{myFilter.form}}
+                <br>
+                <button class="btn btn-primary btn-sm col-3 mt-3" type="submit" style="width:6vw">Search</a>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-body">
+            <h4>{{customers}}'s Order</h4>
+            <hr>
+            <table>
+                <tr>
+                    <th>BOOK</th>
+                    <th>CATEGORY</th>
+                    <th>DATE ORDERED</th>
+                    <th>STATUS</th>
+                    <th>UPDATE</th>
+                    <th>REMOVE</th>
+                </tr>
+
+                {% for i in orders %}
+                <tr>
+                    <td>{{i.book}}</td>
+                    <td>{{i.book.category}}</td>
+                    <td>{{i.date_created}}</td>
+                    <td>{{i.status}}</td>
+                    <td><a class="btn btn-outline-primary btn-sm pt-0 pb-0 mt-1 mb-1"
+                            href="{% url 'update_order' i.id %}">Update</a></td>
+                    <td><a class="btn btn-outline-danger btn-sm pt-0 pb-0 mt-1 mb-1"
+                            href="{% url 'delete_order' i.id %}">Remove</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

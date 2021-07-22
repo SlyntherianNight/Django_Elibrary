@@ -1,0 +1,33 @@
+{% extends 'api_base.html' %}
+
+{% load static %}
+
+
+{% block apicss %}
+<!-- css content here  -->
+<style>
+    .row {
+        margin-left: 7vw;
+        margin-bottom: 6vh;
+        width: 80vw;
+        display: flex;
+        flex-direction: row;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-10">
+        <div class="card card-body">
+            <h3 style="margin:10px 0 20px 0;">Create Customer</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{form}}<br>
+                <input class="my-3 btn btn-sm btn-outline-primary" type="submit" name="submit">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
