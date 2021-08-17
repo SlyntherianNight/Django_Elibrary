@@ -16,19 +16,29 @@
 
 {% block content %}
 <div class="row">
-    <div class="row-1">
-        <div class="col-md-12">
-            <div class="card card-body row " style="width:55vw;margin-left: 9vw;">
+    <div class="row-1 mb-3" style="display: flex;flex-direction: row;">
+        <div class="col-md-3">
+            <div class="card card-body" style="width:260px;">
+                <h5>SEARCH</h5>
+                <hr>
                 <form method="get">
-                    {{myFilter.form}}
-                    <button class="btn btn-primary btn-sm col-3 mt-2" type="submit" style="width:6vw">Search</a>
+                    {{myFilter.form.as_p}}<br>
+                    <button class="btn btn-primary btn-sm col-3 mt-3" type="submit" style="width:100px;">Search</a>
                 </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-body"  style="width:235px;margin-left: 5vw;">
+                <h5>ADD BOOK HERE</h5>
+                <hr>
+                <a href="{% url 'create_book' %}"><button class="btn btn-primary btn-md col-3 mt-1 mx-2"
+                        style="width:100px;">Add Book</button></a>                
             </div>
         </div>
     </div>
     <div class="col-md-12">
         <div class="card card-body">
-            <a class="btn btn-secondary btn-sm btn-block"  href="{% url 'create_book' %}"> BOOKS </a>
+            <button class="btn btn-secondary btn-sm btn-block"> BOOKS </button>
             <hr>
             <table class="table">
                 <tr>
@@ -36,19 +46,19 @@
                     <th>CATEGORY</th>
                     <th>PRICE</th>
                     <th>STATUS</th>
-                    <th>UPDATE</th>
-                    <th>REMOVE</th>
+                    <th>Order</th>
+                    
                 </tr>
 
                 {% for i in books %}
-                    <tr>
-                        <td>{{i.name}}</td>
-                        <td>{{i.category}}</td>
-                        <td>{{i.price}}</td>
-                        <td>{{i.status}}</td>
-                        <td><a class="btn btn-outline-info btn-sm" href="{% url 'update_book' i.id %}">Update</a></td>
-                        <td><a class="btn btn-outline-danger btn-sm" href="{% url 'delete_book' i.id %}">Remove</a></td>
-                    </tr>
+                <tr>
+                    <td>{{i.name}}</td>
+                    <td>{{i.category}}</td>
+                    <td>{{i.price}}</td>
+                    <td>{{i.status}}</td>
+                    <td><a class="btn btn-outline-primary btn-sm btn-block my-2" href="{% url 'create_order' customers.id %}">PLACE
+                        ORDER</a></td>
+                </tr>
                 {% endfor %}
 
             </table>

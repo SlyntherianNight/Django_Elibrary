@@ -32,18 +32,18 @@
                 style="width:55vw"></div>
         <div>
             <ul class="navbar-nav px-3">
-                <li class="nav-item text-nowrap">
-                    <button type="button" class="btn btn-outline-light btn-sm ml-3 mx-2" style="border:0px;"
-                        data-bs-toggle="modal" data-bs-target="#signupModal">
-                        <h5>SignIn</h5>
-                    </button>
+                <li class="nav-item" style="margin-top: 5px;margin-right: 21px;">
+                    <a class=" p-0" style="text-decoration: none;color:white;margin-top:10px">
+                        <span class="mr-2" style="font-size:20px;">Hello, {{request.user}}</span><i class="fas fa-arrow" id="sidebar_btn" onclick="togglemenu()"></i>
+                    </a>
                 </li>
 
-                <li class="nav-item text-nowrap">
+                <li class="nav-item text-nowrap" style="padding-top:3px;padding-bottom:3px;">
+                    <a href="{% url 'logoutuser' %}" style="text-decoration: none;">
                     <button class="btn btn-outline-light btn-sm ml-3 mx-2" style="border:0px;" data-bs-toggle="modal"
                         data-bs-target="#loginModal">
-                        <h5>Register</h5>
-                    </button>
+                        <h5>LogOut</h5>
+                    </button></a>
                 </li>
             </ul>
         </div>
@@ -166,17 +166,30 @@
             <!-- popup sidebar content here  -->
             <nav class="bg-light sidebar" id="sidebar">
                 <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
+                    <ul class="nav flex-column" style="margin-top:60px;">
+                        <div class="nav-item" style="margin-left: 80px;">
+                            <span><img id="profile-pic" class="p-2 mb-1" src="{% static 'images/user1.png' %}" alt="User_image" style="max-width:80px;max-height:80px;margin:0 auto;border:1px solid #aaa;border-radius: 50%;"></span>
+                        </div>
+                        <li class="nav-item" style="display:flex;justify-content: center;">
+                            <a class="nav-link active" href="{% url 'customers' 19 %}" style="border:1px solid #ccc;">{{request.user}}</a>
+                        </li>
+                        {% if request.user.is_staff %}
                         <li class="nav-item">
-                            <a class="nav-link active" href="{% url 'index'  %}" style="border:1px solid #ccc;">
+                            <a class="nav-link" href="{% url 'admin_dashboard'  %}" style="border:1px solid #ccc;">
                                 <span data-feather="home"></span>
-                                Dashboard <span class="sr-only">(current)</span>
+                                Admin-Dashboard <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'books' %}" style="border:1px solid #ccc;">
                                 <span data-feather="shopping-cart"></span>
                                 Books
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'dashboard' %} " style="border:1px solid #ccc;">
+                                <span data-feather="home"></span>
+                                Dashboard <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -191,6 +204,38 @@
                                 About
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/settings" style="border:1px solid #ccc;">
+                                <span data-feather="layers"></span>
+                                Settings
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'dashboard'  %}" style="border:1px solid #ccc;">
+                                <span data-feather="home"></span>
+                                Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/reports" style="border:1px solid #ccc;">
+                                <span data-feather="bar-chart-2"></span>
+                                Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about" style="border:1px solid #ccc;">
+                                <span data-feather="layers"></span>
+                                About
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/settings" style="border:1px solid #ccc;">
+                                <span data-feather="layers"></span>
+                                Settings
+                            </a>
+                        </li>
+                        {% endif %}
                     </ul>
 
                     <h6
@@ -228,6 +273,7 @@
                     </ul>
                 </div>
             </nav>
+
 
             <div class="container">
                 <h1 class="display-4 align-middle mt-3 text-dark" style="margin-left:18vw">Google Api</h1>

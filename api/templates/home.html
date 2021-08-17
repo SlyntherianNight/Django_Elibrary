@@ -1,0 +1,222 @@
+{% extends 'api_index.html' %}
+
+{% block apicss %}
+<!-- css content starts here      -->
+<style>
+    .row {
+        margin-left: 9vw;
+        margin-bottom: 6vh;
+        width: 80vw;
+        display: flex;
+        flex-direction: row;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="card card-body my-1">
+        <h1>Wel-Come to 'E-library' !!!</h1>
+        <h5>Here is all you need...</h5>
+        <hr>
+        
+    </div>
+
+     <!-- books carousel part  -->
+    <div class="container my-2" style="margin-left: 3vw;">
+        <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="container" style="display:flex;flex-wrap: wrap;flex-direction: row;">
+                        <div class="card my-2" style="width: 18rem;margin: 0 0.5vw;">
+                            <img src="https://source.unsplash.com/1600x900/?Book" class="card-img-top p-2" alt="Book1">
+                            <div class="card-body">
+                                <h5 class="card-title">BOOK11</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                        <div class="card my-2" style="width: 18rem;margin: 0 0.5vw;">
+                            <img src="https://source.unsplash.com/1600x900/?Book" class="card-img-top p-2" alt="Book2">
+                            <div class="card-body">
+                                <h5 class="card-title">BOOK12</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                        <div class="card my-2" style="width: 18rem;margin: 0 0.5vw;">
+                            <img src="https://source.unsplash.com/1600x900/?Book" class="card-img-top p-2" alt="Book3">
+                            <div class="card-body">
+                                <h5 class="card-title">BOOK13</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="container" style="display:flex;flex-wrap: wrap;flex-direction: row;">
+                        <div class="card my-2" style="width: 18rem;margin: 0 0.5vw;">
+                            <img src="https://source.unsplash.com/1600x900/?Book1" class="card-img-top p-2" alt="Book1">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                        <div class="card my-2" style="width: 18rem;margin: 0 0.5vw;">
+                            <img src="https://source.unsplash.com/1600x900/?Book2" class="card-img-top p-2" alt="Book2">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                        <div class="card my-2" style="width: 18rem;margin: 0 0.5vw;">
+                            <img src="https://source.unsplash.com/1600x900/?Book3" class="card-img-top p-2" alt="Book3">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="container" style="display:flex;flex-wrap: wrap;flex-direction: row;">
+                        <div class="card my-2" style="width: 18rem;margin: 0 0.5vw;">
+                            <img src="https://source.unsplash.com/1600x900/?Book1" class="card-img-top p-2" alt="Book1">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                        <div class="card my-2" style="width: 18rem;margin: 0 0.5vw;">
+                            <img src="https://source.unsplash.com/1600x900/?Book2" class="card-img-top p-2" alt="Book2">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                        <div class="card my-2" style="width: 18rem;margin: 0 0.5vw;">
+                            <img src="https://source.unsplash.com/1600x900/?Book3" class="card-img-top p-2" alt="Book3">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true" style="margin-left:-180px"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon " aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

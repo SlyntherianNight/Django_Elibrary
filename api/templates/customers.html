@@ -38,9 +38,7 @@
             <span>Phone : {{customers.phone}}</span>
 
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card card-body">
+        <div class="card card-body my-3">
             <h5>TOTAL BOOKS ORDERED</h5>
             <hr>
             <table>
@@ -50,14 +48,15 @@
             </table>
         </div>
     </div>
-</div>
-<div class="row-1">
-    <div class="col-md-12">
-        <div class="card card-body row " style="width:30vw;margin-left: 9vw;">
-            <form method="get">
-                {{myFilter.form}}
+    <div class="col-md-4">
+        <div class="card card-body row " style="width:28vw;margin-left: 0;">
+            <h5>SEARCH</h5>
+            <hr>
+            <form method="post">
+                {% csrf_token %}
+                {{myFilter.form.as_p}}
                 <br>
-                <button class="btn btn-primary btn-sm col-3 mt-3" type="submit" style="width:6vw">Search</a>
+                <button class="btn btn-primary btn-sm col-3 mt-1" type="submit" style="width:64px">Search</a>
             </form>
         </div>
     </div>

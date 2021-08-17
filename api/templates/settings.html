@@ -1,0 +1,41 @@
+{% extends 'api_base.html' %}
+
+{% block apicss %}
+<!-- css content starts here      -->
+<style>
+    .row {
+        margin-left: 7vw;
+        margin-bottom: 6vh;
+        width: 80vw;
+        display: flex;
+        flex-direction: row;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card card-body">
+            <a class="btn btn-warning btn-sm btn-block" href="{% url 'userPage' 19 %}">BACK TO PROFILE</a>
+            <hr style="color:#aaa">
+            <h4>Account Settings</h4>
+            <hr style="color:#aaa">
+            
+            <span><img id="profile-pic" class="p-2" src="{{request.user.customer.profile_pic.url}}" alt="User_image" style="max-width:15vw;max-height:15vw;margin-left:45px;border-radius: 50%;border:1px solid #ccc;"></span>
+            
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="card card-body">
+            <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary btn-sm btn-block p-2"  style="width:80px;" name="update_info">Submit</button>
+            </form>
+        </div>
+    </div>
+    <hr class="my-4" style="color:#aaa">
+</div>
+{% endblock %}

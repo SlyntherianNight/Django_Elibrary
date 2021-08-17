@@ -29,7 +29,7 @@
             <hr>
             <a class="btn btn-outline-primary btn-sm btn-block" href="">UPDATE STUDENT</a>
             <a class="btn btn-outline-primary btn-sm btn-block my-2" href="{% url 'create_lend' students.id %}">LEND
-                BOOk</a>
+                BOOK</a>
         </div>
     </div>
     <div class="col-md-4">
@@ -40,9 +40,7 @@
             <span>Phone : {{students.phone}}</span>
 
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card card-body">
+        <div class="card card-body my-3">
             <h5>TOTAL BOOKS LEND</h5>
             <hr>
             <table>
@@ -52,14 +50,13 @@
             </table>
         </div>
     </div>
-</div>
-<div class="row-1">
-    <div class="col-md-12">
-        <div class="card card-body row " style="width:30vw;margin-left: 9vw;">
-            <form method="get">
+    <div class="col-md-4">
+        <div class="card card-body" style="width:28vw;margin-left: 0;">
+            <form method="post">
+                {% csrf_token %}
                 {{myFilter.form}}
                 <br>
-                <button class="btn btn-primary btn-sm col-3 mt-3" type="submit" style="width:6vw">Search</a>
+                <button class="btn btn-primary btn-sm col-3 mt-3" type="submit" style="width:64px;">Search</a>
             </form>
         </div>
     </div>
@@ -67,6 +64,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card card-body">
+            <h4>{{students}}'s Lend</h4>
             <hr>
             <table>
                 <tr>
