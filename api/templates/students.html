@@ -27,7 +27,7 @@
         <div class="card card-body">
             <h5>STUDENTS</h5>
             <hr>
-            <a class="btn btn-outline-primary btn-sm btn-block" href="">UPDATE STUDENT</a>
+            <a class="btn btn-outline-primary btn-sm btn-block" href="{% url 'update_lend' students.id %}">UPDATE STUDENT</a>
             <a class="btn btn-outline-primary btn-sm btn-block my-2" href="{% url 'create_lend' students.id %}">LEND
                 BOOK</a>
         </div>

@@ -23,6 +23,9 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.main_home, name ='main_home'),
+    path('resume/', views.resume, name ='resume'),
+    path('portfolio/', views.portfolio, name ='portfolio'),
+    path('abhi_contact/', views.abhi_contact, name ='abhi_contact'),
     path('elibrary/', include('api.urls')),
     path('covicare/', include('covicare.urls')),
 ]

@@ -2,26 +2,36 @@
 <html lang="en">
 
 <head>
+    {% load static %}
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="{% static 'CSS/covicare.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/testutils.css' %}">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 
-    <title>Hello, world!</title>
+    <title>Abhijeet Dhumal</title>
     <style>
         body,
         html {
             margin: 0;
             padding: 0;
             height: 100%;
-            background: #7abecc !important;
+            background: #f1f1f1 !important;
         }
-        img{
+
+        .main_bar {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        img {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -29,8 +39,17 @@
             background-color: white;
         }
 
+        .grayscale {
+            filter: grayscale(100%);
+        }
+
+        .huerotate {
+            filter: hue-rotate(180deg);
+        }
+
         .card {
-            background: #74cfbf;
+            color: white;
+            background-color: #282c34;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -46,105 +65,197 @@
             -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             border-radius: 5px;
         }
+
+
+        .grayscale:hover {
+            opacity: 1;
+        }
+
+        a:hover button {
+            background-color: #7abecc;
+        }
+
+        @media screen and (max-width:600px) {
+            .intro {
+                background: black;
+            }
+
+            #myimg {
+                margin-left: 55vw;
+            }
+        }
     </style>
 </head>
 
 <body>
     {% load static %}
+
+    <!-- navbar  -->
+    <div class="container-fluid main_bar"
+        style="height:60px;background-color: #20232a ;display:flex;flex-direction: column;flex-wrap: wrap;">
+        <div>
+            <h2 class="ml-3 mb-2 font1" style="margin-left: 7vw;color: #7abecc;font-size: revert;margin-top:20px;">
+                <span><img src="{% static 'images/boy-face (1).png' %}" alt=""
+                        style="background:#20232a;margin:-5px 10px 0 0;"></span> Abhijeet Dhumal
+            </h2>
+        </div>
+        <div class="d-flex" style="padding-top: 5px;width:50vw;justify-content:flex-end;">
+            <a href="{% url 'main_home' %}" class="mt-3 font3"
+                style="margin-left:3vw;color:white;text-decoration:none;">About_Me</a>
+            <a href="{% url 'portfolio' %}" class="mt-3 font2"
+                style="margin-left:3vw;color:grey;text-decoration:none;">Portfolio</a>
+            <a href="{% url 'resume' %}" class="mt-3 font2"
+                style="margin-left:3vw;color:grey;text-decoration:none;">Resume</a>
+            <a href="{% url 'abhi_contact' %}" class="mt-3 font2"
+                style="margin-left:3vw;color:grey;text-decoration:none;">Contact</a>
+        </div>
+    </div>
+
+    <!-- introduction -->
+    <div class="container-fluid intro"
+        style="height:80vh;position: inherit; background-color: #f1f1f1!important;margin-top:0;display:flex;flex-direction: column;flex-wrap: wrap;color:black;">
+        <div class="col-md-4 grayscale image" style="width:500px;"><img id="myimg"
+                src="{% static 'images/Abhijeet.jpg' %}" style="width:20vw;position: absolute;border-radius: 50%;background-blend-mode: darken; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border:1px solid grey;padding:1vw;
+        margin-top:10vh;margin-left:10vw;;" alt="">
+        </div>
+        <div class="container container-right col-md-7">
+            <h2 class="name" style="font-family:sans-serif;;margin-left:25vw;margin-top:15vh;">Hii, I'm Abhijeet Dhumal
+                _</h2>
+            <h5 class="font-1" style="margin-left:25vw;margin-top:3vh;">An enthusiast, Web developer ,Programmer,
+                Designer & an Enterpreneur...</h5>
+        </div>
+        <div class="container d-flex">
+            <a href="#projects" class="btn getstarted font1"
+                style="border:0px;background-color:black;color:white;border-radius:0px;margin-left:39vw;margin-top:5vh;width:140px;height:50px;padding-top:15px;font-size:18px;">Get
+                Started</a>
+            <h5 class="font1" style="color:black;border-radius:0px;margin-left: 3vw;margin-top: 7vh;
+            width: 175px;">Contact ></h5>
+        </div>
+        <div class="container"
+            style="display:flex;justify-content: flex-end;margin-top: 60vh; width:100%;position: absolute;">
+            <img class="mx-2 my-3 shadow" src="{% static 'images/linkedin (4).png' %}"
+                style="background-color:white;width:40px;" alt="linkedin_icon">
+            <img class="mx-2 my-3 shadow" src="{% static 'images/instagram (4).png' %}"
+                style="background-color:white;width:40px;" alt="facebook_icon">
+            <img class="mx-2 my-3 shadow" src="{% static 'images/facebook (2).png' %}"
+                style="background-color:white;width:40px;margin-right:5vw;" alt="facebook_icon">
+        </div>
+    </div>
+
+    <!-- main content  -->
     <main>
-        <div class="container-fluid" style="display:flex;justify-content: flex-end;">
-            <img class="mx-2 my-3" src="{% static 'images/linkedin (3).png' %}" style="background-color:#7abecc;width:50px;" alt="linkedin_icon">
-            <img class="mx-2 my-3" src="{% static 'images/instagram (3).png' %}" style="border-radius: 15px;background-color:#7abecc;width:50px;" alt="facebook_icon">
-            <img class="mx-2 my-3" src="{% static 'images/facebook.png' %}" style="background-color:#7abecc;width:50px;border-radius: 9px;" alt="facebook_icon">
-        </div>
-        <div class="container-fluid d-flex" style="justify-content: center;margin-top: 20vh;margin-bottom: 10vh;">
-            <h1 style="color:white;">Abhijeet Dhumal</h1>
-        </div>
-        <div class="col-md-10">
-            <div class="card card-body" style="margin-left:16vw;">
-                <div id="myCarousel" class=" container carousel slide my-3" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
+
+        <!-- social media links  -->
+
+
+
+        <hr class="featurette-divider" style="margin-bottom: 15px;">
+
+        <!-- carousel part  -->
+        <div style="background-color:#20232a" style="margin-top:130vh;justify-content: center;position: fixed;">
+            <div class="col-md-8" style="margin:0 15vw 0 15vw;padding-top:30px;padding-bottom: 30px;">
+                <div class="card card-body">
+                    <div id="myCarousel" class=" container carousel slide my-3" data-bs-ride="carousel">
+                        <!--carousel indicators  -->
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                                aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <!-- first carousel  -->
+                            <div class="carousel-item active" style="height:40vh;">
+                                <svg class="bd-placeholder-img" width="100%" height="100%"
+                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <rect width="100%" height="100%" fill="#282c34" />
+                                </svg>
+                                <div class="container">
+                                    <div class="carousel-caption text-start">
+                                        <h2 class="name"
+                                            style="font-family:sans-serif;margin-top:15vh;">Hii, I'm
+                                            Abhijeet Dhumal
+                                            _</h2>
+                                        <h5 class="font-1" style="margin-top:3vh; margin-bottom:7vh;">An enthusiast, Web
+                                            developer ,Programmer,
+                                            Designer & an Enterpreneur...</h5>
+
+                                        <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- second carousel  -->
+                            <div class="carousel-item"  style="height:40vh;">
+                                <svg class="bd-placeholder-img" width="100%" height="100%"
+                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <rect width="100%" height="100%" fill="#282c34" />
+                                </svg>
+
+                                <div class="container">
+                                    <div class="carousel-caption">
+                                        <h1>Another example headline.</h1>
+                                        <p>Some representative placeholder content for the second slide of the carousel.
+                                        </p>
+                                        <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- third carousel  -->
+                            <div class="carousel-item"  style="height:40vh;">
+                                <svg class="bd-placeholder-img" width="100%" height="100%"
+                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <rect width="100%" height="100%" fill="#282c34" />
+                                </svg>
+
+                                <div class="container">
+                                    <div class="carousel-caption text-end">
+                                        <h1>One more for good measure.</h1>
+                                        <p>Some representative placeholder content for the third slide of this carousel.
+                                        </p>
+                                        <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- left previous carousel indicator  -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <!-- right previous carousel indicator  -->
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <svg class="bd-placeholder-img" width="100%" height="100%"
-                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <rect width="100%" height="100%" fill="#777" />
-                            </svg>
-
-                            <div class="container">
-                                <div class="carousel-caption text-start">
-                                    <h1>Example headline.</h1>
-                                    <p>Some representative placeholder content for the first slide of the carousel.</p>
-                                    <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <svg class="bd-placeholder-img" width="100%" height="100%"
-                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <rect width="100%" height="100%" fill="#777" />
-                            </svg>
-
-                            <div class="container">
-                                <div class="carousel-caption">
-                                    <h1>Another example headline.</h1>
-                                    <p>Some representative placeholder content for the second slide of the carousel.</p>
-                                    <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <svg class="bd-placeholder-img" width="100%" height="100%"
-                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <rect width="100%" height="100%" fill="#777" />
-                            </svg>
-
-                            <div class="container">
-                                <div class="carousel-caption text-end">
-                                    <h1>One more for good measure.</h1>
-                                    <p>Some representative placeholder content for the third slide of this carousel.</p>
-                                    <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
             </div>
         </div>
 
 
-        <!-- Marketing messaging and featurettes
-        ================================================== -->
-        <!-- Wrap the rest of the page in another container to center all the content. -->
 
-        <div class="container marketing">
-            <hr class="featurette-divider" style="margin-top: 54px;">
-            <legend>Projects </legend>
-            <div class="row my-3">
-                <div class="col-md-4">
+        <hr class="featurette-divider" style="margin-top: 24px;">
+
+        <!-- projects part  -->
+        <div class="container marketing" id="projects" style="background-color:#20232a">
+            <button class="btn mb-3 font1"
+                style="background-color:#7abecc;border-radius:0px;margin-left:1vw;margin-top:4vh;height:50px;"><b>Some
+                    of my past projects</b></button>
+            <hr class="text-light" style="margin:0 5px 15px 5px;">
+            <div class="row my-1" style="margin-left:20vw;padding-bottom:5vh;">
+                <!-- first project  -->
+                <div class="col-md-4 mb-2">
                     <div class="card card-body">
-                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        <svg class="bd-placeholder-img" style="margin-top: -15px;margin-left: -16px;" width="260"
+                            height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
                             preserveAspectRatio="xMidYMid slice" focusable="false">
                             <title>Placeholder</title>
                             <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
@@ -158,10 +269,11 @@
                         <p><a class="btn btn-secondary" href="/elibrary">View here &raquo;</a></p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <!-- project 2  -->
+                <div class="col-md-4 mt-1">
                     <div class="card card-body">
-                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                        <svg class="bd-placeholder-img" style="margin-top: -15px;margin-left: -16px;" width="260"
+                            height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
                             preserveAspectRatio="xMidYMid slice" focusable="false">
                             <title>Placeholder</title>
                             <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
@@ -172,13 +284,16 @@
                         <p>A website which will connect our covid warriors such as health care workers, ambulance
                             drivers volunteers to the people by connecting all we will definitely face covid 19
                             effectively</p>
-                        <p><a class="btn btn-secondary" href="/covicare" style="margin-top: 47px;">>View here
+                        <p><a class="btn btn-secondary" href="/covicare" style="margin-top: 43px;">View here
                                 &raquo;</a></p>
                     </div>
                 </div>
             </div>
 
+        </div>
 
+        <!-- remaining info part  -->
+        <div class="container marketing">
             <hr class="featurette-divider" style="margin-top: 54px;">
 
             <div class="row featurette">
@@ -244,15 +359,18 @@
 
             <hr class="featurette-divider">
 
-            <!-- /END THE FEATURETTES -->
 
-        </div><!-- /.container -->
+        </div>
 
 
         <!-- FOOTER -->
-        <footer class="container">
-            <p class="float-end"><a href="#">Back to top</a></p>
-            <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <footer class="container-fluid d-flex"
+            style="background-color:#20232a;color:white;height:20vh;position:absolute;flex-direction: row;justify-content: center;">
+            <div class="col-md-3 d-flex" style="flex-direction: column;justify-content: center;">
+                <h4 class="font-4 mt-3" style="margin-left: 4vw;color:white;font-family:monospace;">@Abhijeet Dhumal
+                </h4>
+                <h5 style="color:white;font-family:monospace;">abhijeetarundhumal@gmail.com</h5>
+            </div>
         </footer>
     </main>
 

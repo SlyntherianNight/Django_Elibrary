@@ -1,3 +1,7 @@
+import django_heroku
+import dj_database_url
+from decouple import config
+
 """
 Django settings for Elibrary project.
 
@@ -62,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Elibrary.urls'
@@ -147,6 +152,8 @@ STATICFILES_DIRS = [
 ]
 MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
 
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressManifestStaticFilesStorage'
 # for reset password email authentication 
 #SMTP Configuration
 
@@ -156,3 +163,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'slyntherianknight@gmail.com'                                     
 EMAIL_HOST_PASSOWORD = 'Abhijeet652@'           
+
+
+django_heroku.settings(locals())

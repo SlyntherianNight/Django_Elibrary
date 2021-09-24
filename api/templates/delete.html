@@ -23,7 +23,7 @@
             <h3 style="margin:10px 0 20px 0;">Do you really want to delete '{{item}}' !!!</h3>
             <form action="{% url 'delete_order' item.id %}" method="post">
                 {% csrf_token %}
-                <a class="btn btn-sm btn-outline-secondary" href="{% url 'index' %}">Cancel</a>
+                <a class="btn btn-sm btn-outline-secondary" href="{% url 'dashboard' %}">Cancel</a>
                 <input type="submit" class="btn btn-sm btn-outline-danger mx-1" name="confirm" value="Confirm">
             </form>
         </div>

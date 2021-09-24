@@ -138,6 +138,7 @@ def dashboard(request):
     orders = Order.objects.all()
     lends = Lend.objects.all()
     cou = lends.count()
+    userkon = request.user
     books = Book.objects.all()
     # for adding search filter on customer product table 
     myFilter = BookFilter(request.GET, queryset= books)
@@ -147,7 +148,7 @@ def dashboard(request):
     delivered = orders.filter(status='Delivered').count()
     pending = orders.filter(status='pending').count()
 
-    context = {'customers':customers,'students':students,'lends':lends,'cou':cou,'orders':orders,'books': books,'total_books':total_books,'total_orders':total_orders,'delivered':delivered,'pending':pending,'myFilter':myFilter}
+    context = {'customers':customers,'students':students,'userkon':userkon,'lends':lends,'cou':cou,'orders':orders,'books': books,'total_books':total_books,'total_orders':total_orders,'delivered':delivered,'pending':pending,'myFilter':myFilter}
     return render(request,'dashboard.html',context)
 
 @login_required(login_url='customers')
@@ -242,15 +243,17 @@ def createCustomer(request):
 
 @login_required(login_url='home')
 def createOrder(request, pk):
+    order = Order.objects.get(id=pk)
     customer = Customer.objects.get(id=pk)
     form = OrderForm(initial={'customer':customer})
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/customers/'+pk)
-    context={'form':form}
+            return redirect('/elibrary/customers/'+pk)
+    context={'form':form,'order':order,'customer':customer}
     return render(request,'orders_form.html', context)
+
 
 @login_required(login_url='home')
 def updateOrder(request,pk):
@@ -261,7 +264,7 @@ def updateOrder(request,pk):
         form = OrderForm(request.POST, instance=order)
         if form.is_valid():
             form.save()
-            return redirect('/customers/'+ pk)
+            return redirect('/elibrary/customers/'+ pk)
     context={'form':form}
     return render(request,'orders_form.html', context)
 
@@ -282,20 +285,20 @@ def createLend(request, pk):
         form = LendForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/students/'+ pk)
+            return redirect('/elibrary/students/'+ pk)
     context={'form':form,'student':student}
     return render(request,'lends_form.html', context)
 
 @login_required(login_url='home')
 def updateLend(request,pk):
     lend = Lend.objects.get(id=pk)
-    form = LendForm(instance=lend)
+    form = LendForm(initial={'lend':lend})
     if request.method == 'POST':
         # print('Printing Post : ', request.POST)
-        form = LendForm(request.POST, instance=lend)
+        form = LendForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/students/'+ pk)
+            return redirect('/elibrary/students/'+ pk)
     context={'form':form}
     return render(request,'lends_form.html', context)
 
@@ -304,7 +307,7 @@ def deleteLend(request,pk):
     lend = Lend.objects.get(id=pk)
     if request.method == 'POST':
         lend.delete()
-        return redirect('/students/'+ pk)
+        return redirect('/elibrary/students/'+ pk)
     context={'item':lend}
     return render(request,'delete.html', context)
 
@@ -316,7 +319,7 @@ def createBook(request):
         form = BookForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/books')
+            return redirect('/elibrary/books')
     context={'form':form}
     return render(request,'books_form.html', context)
 
@@ -329,7 +332,7 @@ def updateBook(request,pk):
         form = BookForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/books')
+            return redirect('/elibrary/books')
     context={'form':form}
     return render(request,'books_form.html', context)
 
@@ -338,7 +341,7 @@ def deleteBook(request,pk):
     book = Book.objects.get(id=pk)
     if request.method == 'POST':
         book.delete()
-        return redirect('/books')
+        return redirect('/elibrary/books')
     context={'item':book}
     return render(request,'delete.html', context)
     

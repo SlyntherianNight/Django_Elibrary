@@ -1,377 +1,227 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
+
+    {% block covicss %}
+    <!-- css content write here  -->
+    {% endblock %}
+
+
+    {% block body %}
     {% load static %}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoviCare</title>
-    <link rel="stylesheet" href="{% static 'CSS/testutils.css' %}">
-    <link rel="stylesheet" href="{% static 'CSS/covicare.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="CSS/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <script type="text/javascript">
-    function sign_up_validate()
-    {
-        let uemail= document.getElementById("exampleInputEmail1");
-        let upassword= document.getElementById("exampleInputPassword1");
-        if(uemail.value =="" || upassword.value ==""){
-            alert("Welcome ", uemail ,"to Covicare !!!");  
-        }
-    }
-    </script>
-</head>
-
-<body>
-    <!-- first title bar part -->
-    <div class="container1">
-        <button type="button" class="btn btn-outline-light ml-3" style="margin-left: 1vw;" data-bs-toggle="modal"
-            data-bs-target="#signupModal">
-            <h5>SignUp</h5>
-        </button>
-        <!-- Modal -->
-        <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="signupModalLabel">SignUp</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form methods="" action="" onsubmit="validate()">
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
-                            </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                            <button type="submit" onclick="sign_up_validate()" class="btn btn-primary">Sign-in</button>
-
-                        </form>
-                    </div>
-
-                    <div class="modal-footer">
-                        <h6 class="modal-title" id="registerModalLabel">if dont have an account.. <button
-                            class="btn btn-outline-secondary" data-bs-toggle="modal"
-                                data-bs-target="#loginModal">Register</button></h6>
-                                <!-- form for register -->
-                        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
-                        aria-hidden="true" style="margin-bottom:50px;">
-                        <div class="modal-dialog">
-                                <div class="modal-content ">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="loginModalLabel">Register as a Covid-Warrior
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="" method="" onsubmit="register_validate()">
-                                            <div class="mb-3">
-                                                <label for="loginInputEmail1" class="form-label">Full Name</label>
-                                                <input type="text" class="form-control" id="loginInputText"
-                                                aria-describedby="textHelp">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleInputEmail2" class="form-label">Email
-                                                    address</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail2"
-                                                aria-describedby="emailHelp">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleInputPassword2" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword2">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="loginInputEmail1" class="form-label">Gender</label>
-                                                <div class=" ml-2">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                        name="flexRadioDefault1" id="flexRadioDefault1">
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            Male
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="flexRadioDefault2" id="flexRadioDefault2">
-                                                        <label class="form-check-label" for="flexRadioDefault2">
-                                                            Female
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                        name="flexRadioDefault3" id="flexRadioDefault3">
-                                                        <label class="form-check-label" for="flexRadioDefault3">
-                                                            Prefer not to say...
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="validationCustom03" class="form-label">City</label>
-                                                <input type="text" class="form-control" id="validationCustom03"
-                                                    required>
-                                                <div class="invalid-feedback">
-                                                    Please provide a valid city.
-                                                </div>
-                                            </div>
-                                            <div class="col-md-9" style="margin-bottom: 20px;">
-                                                <label for="validationCustom04" class="form-label">State</label>
-                                                <select class="form-select" id="validationCustom04" required>
-                                                    <option selected disabled value="">Choose...</option>
-                                                    <option>Maharashtra</option>
-                                                    <option>...</option>
-                                                </select>
-                                                <div class="invalid-feedback">
-                                                    Please select a valid state.
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                                                <label class="form-check-label" for="exampleCheck2">Check me
-                                                    out</label>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary"
-                                            onclick="register_validate()">Register</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+        <!-- navigation bar part -->
+        <div class="nav-bar">
+            <div class="nav-content">
+                <div class="item item2"><i class="fas fa-bars" id="sidebar_btn" onclick="togglemenu()"></i></div>
+                <div class="item item2">Home </div>
+                <div class="item item1"><a href="{% url 'covicare_chat' %}" id="link-items" style="text-decoration: none;">Chats</a></div>
+                <div class="item item1"><a href="{% url 'covicare_about' %}" id="link-items" style="text-decoration: none;">About</a></div>
+                <div class="item item1"><a href="{% url 'covicare_contact' %}" id="link-items" style="text-decoration: none;">Contacts</a>
                 </div>
             </div>
+            <div class="search">
+                <div class="searchbox"><input type="text" placeholder="   Search Here.."></div>
+                <div class="sea-rch"><a href="#" class="search-link">
+                        <h3 id="sea-rch" class="font1" style="font-size:18px;padding:1vh 2vh;">Search</h3>
+                    </a></div>
+            </div>
         </div>
-        <div class="items item-2">
-            <h1>CoviCare</h1>
-        </div>
-    </div>
 
-    <!-- navigation bar part -->
-    <div class="nav-bar">
-        <div class="nav-content">
-            <div class="item item2"><i class="fas fa-bars" id="sidebar_btn" onclick="togglemenu()"></i></div>
-            <div class="item item2">Home </div>
-            <div class="item item1"><a href="{% url 'covicare_chat' %}" id="link-items" style="text-decoration: none;">Chats</a></div>
-            <div class="item item1"><a href="{% url 'covicare_about' %}" id="link-items" style="text-decoration: none;">About</a></div>
-            <div class="item item1"><a href="{% url 'covicare_contact' %}" id="link-items" style="text-decoration: none;">Contacts</a>
+        <!-- container3 part -->
+        <div class="container3">
+            <div id="sidebar" onclick="togglemenu()">
+                <div class="profile"></div>
+                <h4 id="username" style="color:white">Username</h4>
+                <a href="#" class="menu-link"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
+                <a href="#" class="menu-link"><i class="fas fa-share-square"></i><span>Share</span></a>
+                <a href="#" class="menu-link"><i class="fas fa-cogs"></i><span>Settings</span></a>
+                <a href="#" class="menu-link"><i class="fas fa-sign-out-alt"></i><span>Log-out</span></a>
+            </div>
+            <div class="container3-left">
+                <div id="madefor">
+                    <h4 class="font1">Made For Covid-Warriors</h4>
+                </div>
+                <div id="slogan">
+                    <h2>Welcome to our Covi-care</h2>
+                </div>
+                <p class="line">In the course of COVID-19 pandemic ,there are so many peoples out there who need
+                    our help,
+                    So we
+                    are here for them...</p>
+                <p class="line">The Covid-warriors have registered on this website to help peoples which are
+                    stucked in this
+                    lockdown due to lack of services</p>
+                <p class="line">So join us to help them,..</p>
+            </div><br><br>
+            <div class="container3-right">
+                <img src="{% static 'images/doctor,nurse.jpg'%}" id="main-img" alt="">
             </div>
         </div>
-        <div class="search">
-            <div class="searchbox"><input type="text" placeholder="   Search Here.."></div>
-            <div class="sea-rch"><a href="#" class="search-link">
-                    <h3 id="sea-rch" class="font1" style="font-size:18px;padding:1vh 2vh;">Search</h3>
-                </a></div>
-        </div>
-    </div>
 
-    <!-- container3 part -->
-    <div class="container3">
-        <div id="sidebar" onclick="togglemenu()">
-            <div class="profile"></div>
-            <h4 id="username" style="color:white">Username</h4>
-            <a href="#" class="menu-link"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-            <a href="#" class="menu-link"><i class="fas fa-share-square"></i><span>Share</span></a>
-            <a href="#" class="menu-link"><i class="fas fa-cogs"></i><span>Settings</span></a>
-            <a href="#" class="menu-link"><i class="fas fa-sign-out-alt"></i><span>Log-out</span></a>
-        </div>
-        <div class="container3-left">
-            <div id="madefor">
-                <h4 class="font1" style="">Made For Covid-Warriors</h4>
-            </div>
-            <div id="slogan" style="">
-                <h2>Welcome to our Covi-care</h2>
-            </div>
-            <p class="line" style="">In the course of COVID-19 pandemic ,there are so many peoples out there who need
-                our help,
-                So we
-                are here for them...</p>
-            <p class="line" style="">The Covid-warriors have registered on this website to help peoples which are
-                stucked in this
-                lockdown due to lack of services</p>
-            <p class="line" style="">So join us to help them,..</p>
+        <div style="max-width: 1; margin: 0 3vw 0 3vw ;">
+            <hr>
         </div><br><br>
-        <div class="container3-right">
-            <img src="img/doctor,nurse.jpg" id="main-img" alt="">
-        </div>
-    </div>
 
-    <div style="max-width: 1; margin: 0 3vw 0 3vw ;">
-        <hr>
-    </div><br><br>
+        <article class="" style="margin: 0 5vw;">
+            <div class="" style="margin-left: 10px;margin-right: 10px;margin-top:10px;">
+                <div class="row">
+                    <div class="col-4" style="height:450px;margin-top: -20px;">
+                        <div class="p-3 border bg-light my-3" style="height: 400px;">
+                            <h2 class="emer">Emergency</h2>
+                            <p style="margin-left:-15px;"><b>____________</b></p>
+                            <h2 class="emer-head">Corrona-virus disease (COVID-19) pandemic</h2>
+                            <button type="button" class="btn btn-dark"><a
+                                href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank"
+                                    style="color:white;"> All info here--></a></button>
+                                </div>
 
-    <article class="" style="margin: 0 5vw;">
-        <div class="" style="margin-left: 10px;margin-right: 10px;margin-top:10px;">
-            <div class="row">
-                <div class="col-4" style="height:450px;margin-top: -20px;">
-                    <div class="p-3 border bg-light my-3" style="height: 400px;">
-                        <h2 class="emer">Emergency</h2>
-                        <p style="margin-left:-15px;"><b>____________</b></p>
-                        <h2 class="emer-head">Corrona-virus disease (COVID-19) pandemic</h2>
-                        <button type="button" class="btn btn-dark"><a
-                            href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank"
-                                style="color:white;"> All info here--></a></button>
-                            </div>
-
-                </div>
-                <div class="col-8 my-1" style="margin-top: -20px;">
-                    <div class="card" style="height: 50px;">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Covid-19 Quick links --></li>
-                        </ul>
                     </div>
-                    <div class="accordion accordion-flush" id="accordionFlushExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingOne">
-                                <button class="accordion-button collapsed bg-light" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                aria-controls="flush-collapseOne">
-                                    Advice for the public
-                                </button>
-                            </h2>
-                            <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <p>Protect yourself</p>
-                                    <p>Questions and answers</p>
-                                    <p>Myth Busters</p>
-                                    <p>Travel advice</p>
+                    <div class="col-8 my-1" style="margin-top: -20px;">
+                        <div class="card" style="height: 50px;">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Covid-19 Quick links --></li>
+                            </ul>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed bg-light" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                        Advice for the public
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>Protect yourself</p>
+                                        <p>Questions and answers</p>
+                                        <p>Myth Busters</p>
+                                        <p>Travel advice</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingTwo">
-                                <button class="accordion-button collapsed bg-light" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                    aria-controls="flush-collapseTwo">
-                                    Country & Technical Guidance
-                                </button>
-                            </h2>
-                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <p>All technical guide</p>
-                                    <p>Clinical care</p>
-                                    <p>Essential health services</p>
-                                    <p>Essential resource planning</p>
-                                    <p>Infection prevention and control / WASH</p>
-                                    <p>Schools, businesses and institutions</p>
-                                    <p>Travel and mass gatherings</p>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingTwo">
+                                    <button class="accordion-button collapsed bg-light" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                        Country & Technical Guidance
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>All technical guide</p>
+                                        <p>Clinical care</p>
+                                        <p>Essential health services</p>
+                                        <p>Essential resource planning</p>
+                                        <p>Infection prevention and control / WASH</p>
+                                        <p>Schools, businesses and institutions</p>
+                                        <p>Travel and mass gatherings</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingThree">
-                                <button class="accordion-button collapsed bg-light" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-                                    aria-expanded="false" aria-controls="flush-collapseThree">
-                                    Vaccines, Treatments & Tests
-                                </button>
-                            </h2>
-                            <div id="flush-collapseThree" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">ACT - Accelerator and COVAX COVID-19 vaccines</div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingFour">
-                                <button class="accordion-button collapsed bg-light" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false"
-                                aria-controls="flush-collapseFour">
-                                Situation updates
-                                </button>
-                            </h2>
-                            <div id="flush-collapseFour" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <p>Situation reports</p>
-                                    <p>Situation dashboard</p>
-                                    <p>Disease Outbreak News</p>
-                                    <p>Timeline: WHO's response</p>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingThree">
+                                    <button class="accordion-button collapsed bg-light" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                        aria-expanded="false" aria-controls="flush-collapseThree">
+                                        Vaccines, Treatments & Tests
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">ACT - Accelerator and COVAX COVID-19 vaccines</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingFive">
-                                <button class="accordion-button collapsed bg-light" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false"
-                                    aria-controls="flush-collapseFive">
-                                    Reasearch & Devlopment
-                                </button>
-                            </h2>
-                            <div id="flush-collapseFive" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                    <p>Global research on coronavirus disease</p>
-                                    <p>Update on research activities</p>
-                                    <p>International Clinical Trials Registry platform</p>
-                                    <p>COVID-19 Emergency Use Listing Procedure</p>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingFour">
+                                    <button class="accordion-button collapsed bg-light" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                    aria-controls="flush-collapseFour">
+                                    Situation updates
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>Situation reports</p>
+                                        <p>Situation dashboard</p>
+                                        <p>Disease Outbreak News</p>
+                                        <p>Timeline: WHO's response</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingFive">
+                                    <button class="accordion-button collapsed bg-light" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false"
+                                        aria-controls="flush-collapseFive">
+                                        Reasearch & Devlopment
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFive" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                        <p>Global research on coronavirus disease</p>
+                                        <p>Update on research activities</p>
+                                        <p>International Clinical Trials Registry platform</p>
+                                        <p>COVID-19 Emergency Use Listing Procedure</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
-    </article><br><br><br>
-    <div style="max-width: 1; margin: 0 3vw 0 3vw ;">
-        <hr>
-    </div><br><br>
-    <!-- artticles part -->
-    <h2 class="font1" style="margin-left: 5vw;">Featured articles</h2>
-    <div class="home-articles">
-        <div class="article-1">
-            <div class="article-left"><img src="img/virus-bg.jpg" alt="doctors" class="article-img">
+        </article><br><br><br>
+        <div style="max-width: 1; margin: 0 3vw 0 3vw ;">
+            <hr>
+        </div><br><br>
+        <!-- artticles part -->
+        <h2 class="font1" style="margin-left: 5vw;">Featured articles</h2>
+        <div class="home-articles">
+            <div class="article-1">
+                <div class="article-left"><img src="{% static 'images/virus-bg.jpg' %}" alt="doctors" class="article-img">
+                </div>
+                <div class="article-right" > <span><b>Author Name</b></span><br>
+                    <span>Lorem ipsum dolor sit amet consectetur</span><br>
+                    <span>adipisicing elit. Tempora, unde.</span><br><br>
+                    <div class="m-bot"><span><b>January 16 | 6 min read</b></span></div>
+                </div>
             </div>
-            <div class="article-right" > <span><b>Author Name</b></span><br>
-                <span>Lorem ipsum dolor sit amet consectetur</span><br>
-                <span>adipisicing elit. Tempora, unde.</span><br><br>
-                <div class="m-bot"><span><b>January 16 | 6 min read</b></span></div>
+            <div class="article-1">
+                <div class="article-left"><img src="{% static 'images/components.jpg' %}" alt="doctors" class="article-img">
+                </div>
+                <div class="article-right" > <span><b>Author Name</b></span><br>
+                    <span>Lorem ipsum dolor sit amet consectetur</span><br>
+                    <span>adipisicing elit. Tempora, unde.</span><br><br>
+                    <div class="m-bot"><span><b>December 28 | 2 weeks read</b></span></div>
+                </div>
             </div>
-        </div>
-        <div class="article-1">
-            <div class="article-left"><img src="img/components.jpg" alt="doctors" class="article-img">
+            <div class="article-1">
+                <div class="article-left"><img src="{% static 'images/typewriter.jpg' %}" alt="doctors" class="article-img"> </div>
+                <div class="article-right" > <span><b>Author Name</b></span><br>
+                    <span>Lorem ipsum dolor sit amet consectetur</span><br>
+                    <span>adipisicing elit. Tempora, unde.</span><br><br>
+                    <div class="m-bot"><span><b>June 15 | 15months read</b></span></div>
+                </div>
             </div>
-            <div class="article-right" > <span><b>Author Name</b></span><br>
-                <span>Lorem ipsum dolor sit amet consectetur</span><br>
-                <span>adipisicing elit. Tempora, unde.</span><br><br>
-                <div class="m-bot"><span><b>December 28 | 2 weeks read</b></span></div>
+            <div class="article-1">
+                <div class="article-left"><img src="{% static 'images/doctor,nurse.jpg' %}" alt="doctors" class="article-img"> </div>
+                <div class="article-right" > <span><b>Author Name</b></span><br>
+                    <span>Lorem ipsum dolor sit amet consectetur</span><br>
+                    <span>adipisicing elit. Tempora, unde.</span><br><br>
+                    <div class="m-bot"><span><b>March 17 | 18 months read</b></span></div>
+                </div>
             </div>
-        </div>
-        <div class="article-1">
-            <div class="article-left"><img src="img/typewriter.jpg" alt="doctors" class="article-img"> </div>
-            <div class="article-right" > <span><b>Author Name</b></span><br>
-                <span>Lorem ipsum dolor sit amet consectetur</span><br>
-                <span>adipisicing elit. Tempora, unde.</span><br><br>
-                <div class="m-bot"><span><b>June 15 | 15months read</b></span></div>
-            </div>
-        </div>
-        <div class="article-1">
-            <div class="article-left"><img src="img/doctor.jpg" alt="doctors" class="article-img"> </div>
-            <div class="article-right" > <span><b>Author Name</b></span><br>
-                <span>Lorem ipsum dolor sit amet consectetur</span><br>
-                <span>adipisicing elit. Tempora, unde.</span><br><br>
-                <div class="m-bot"><span><b>March 17 | 18 months read</b></span></div>
-            </div>
-        </div>
-    </div><br><br>
-    <div style="max-width: 1; margin: 0 1vw 0 1vw ;">
-        <hr>
-    </div><br><br>
+        </div><br><br>
+        <div style="max-width: 1; margin: 0 1vw 0 1vw ;">
+            <hr>
+        </div><br><br>
+
+    {% endblock %}
 
     <!-- footer part -->
     <footer class="footer">

@@ -28,17 +28,17 @@ urlpatterns = [
     path('api_base/<str:pk>/', views.api_base, name ='api_base'),
     path('customer_register/', views.customer_registerPage, name ='customer_registerPage'),
     path('student_register/', views.student_registerPage, name ='student_registerPage'),
-    path('login/', views.loginPage, name ='loginPage'),
-    path('logout/', views.logoutuser, name ='logoutuser'),
+    path('elibrary_login/', views.loginPage, name ='loginPage'),
+    path('elibrary_logout/', views.logoutuser, name ='logoutuser'),
     path('user/<str:pk>/', views.customers, name ='userPage'),
     path('admin_dashboard/', views.admin_dashboard, name ='admin_dashboard'),
     path('dashboard/', views.dashboard, name ='dashboard'),
     path('students/<str:pk>/', views.students, name ='students'),
     path('customers/<str:pk>/', views.customers, name ='customers'),
-    path('books/', views.books, name ='books'),
-    path('reports/', views.reports, name ='reports'),
-    path('about/', views.about, name ='about'),
-    path('settings/', views.settings, name ='settings'),
+    path('elibrary_books/', views.books, name ='books'),
+    path('elibrary_reports/', views.reports, name ='elibrary_reports'),
+    path('elibrary_about/', views.about, name ='elibrary_about'),
+    path('elibrary_settings/', views.settings, name ='elibrary_settings'),
 
     
     # admin control- to create,update & delete students & customers

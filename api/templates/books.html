@@ -56,7 +56,7 @@
                     <td>{{i.category}}</td>
                     <td>{{i.price}}</td>
                     <td>{{i.status}}</td>
-                    <td><a class="btn btn-outline-primary btn-sm btn-block my-2" href="{% url 'create_order' customers.id %}">PLACE
+                    <td><a class="btn btn-outline-primary btn-sm btn-block my-2" href="{% url 'create_order' i.id %}">PLACE
                         ORDER</a></td>
                 </tr>
                 {% endfor %}
